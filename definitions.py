@@ -4,6 +4,10 @@ class FanMode(Enum):
     AUTO = 0
     ON = 1
 
+class FanState(Enum):
+    OFF = 0
+    ON = 1
+
 class Modes(Enum):
     OFF =  0
     HEAT = 1

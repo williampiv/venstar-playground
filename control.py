@@ -15,7 +15,7 @@ def set_cool_temp(ip: str, cooltemp: int) -> bool:
 
 def set_fan_mode(ip: str, fan_mode: FanMode) -> bool:
     current_thermostat = s.get_thermostat_info(ip)
-    response_data = { 'heattemp': current_thermostat['heattemp'], 'cooltemp': current_thermostat['cooltemp'], 'fan': fan_mode }
+    response_data = { 'heattemp': current_thermostat['heattemp'], 'cooltemp': current_thermostat['cooltemp'], 'fan': fan_mode.value }
     req = requests.post('http://{}/control'.format(ip), data=response_data)
     try:
         req.raise_for_status()

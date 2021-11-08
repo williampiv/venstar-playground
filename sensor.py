@@ -1,4 +1,5 @@
 import requests, json
+from definitions import FanState
 
 def get_sensor_readings(thermostat_ip: str) -> list:
     req = requests.get('http://{}/query/sensors'.format(thermostat_ip))
@@ -17,3 +18,7 @@ def get_thermostat_info(thermostat_ip: str) -> dict:
         print(e)
         return {}
     return req.json()
+
+def get_fan_state(ip: str) -> str:
+    info = get_thermostat_info(ip)
+    return FanState(info['fanstate']).name
